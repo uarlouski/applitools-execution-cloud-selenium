@@ -22,7 +22,7 @@ public class Main {
             driver.get("https://example.com");
 
             // Exception in thread "main" org.openqa.selenium.WebDriverException: Request "openFunctionalSession" that was
-            // sent to the address "[POST]https://jnjeyesapi.applitools.com/api/sessions/running?apiKey=Stbxs51wMxutCNZqtDq1gAJIkUfXmR97iYStb2kjQAHo110"
+            // sent to the address "[POST].../api/sessions/running?apiKey=..."
             // failed due to unexpected status Bad Request(400)
             ((JavascriptExecutor) driver).executeScript("applitools:startTest", "test-name", "app-name");
 
