@@ -4,7 +4,7 @@
 EYES_SERVER_URL=... API_KEY=... ./gradlew run
 ```
 
-## Bad Request on applitools:startTest
+## Bad Request on applitools:startTest (fixed, obsolete documentation)
 
 [Docs](https://applitools.com/docs/topics/execution-cloud/non-eyes.html)
 

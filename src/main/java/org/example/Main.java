@@ -8,6 +8,8 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Main {
     public static void main(String[] args) throws MalformedURLException {
@@ -17,17 +19,24 @@ public class Main {
         caps.setCapability("applitools:apiKey", System.getenv("API_KEY"));
 
         WebDriver driver = new RemoteWebDriver(new URL(Eyes.getExecutionCloudURL()), caps);
+        JavascriptExecutor executor = (JavascriptExecutor) driver;
 
         try {
-            driver.get("https://example.com");
+            executor.executeScript("applitools:startTest", Map.of(
+                    "testName", "test-name",
+                    "appName", "app-name"
+            ));
 
-            // Exception in thread "main" org.openqa.selenium.WebDriverException: Request "openFunctionalSession" that was
-            // sent to the address "[POST].../api/sessions/running?apiKey=..."
-            // failed due to unexpected status Bad Request(400)
-            ((JavascriptExecutor) driver).executeScript("applitools:startTest", "test-name", "app-name");
+            driver.get("https://example.com");
 
             String title = driver.getTitle();
             System.out.println("title " + title);
+
+            Map<String,String> paramsEnd = new HashMap<>();
+
+            executor.executeScript("applitools:endTest" , Map.of(
+                    "status", "Passed"
+            ));
         } finally {
             driver.quit();
         }
