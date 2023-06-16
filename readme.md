@@ -4,9 +4,44 @@
 EYES_SERVER_URL=... API_KEY=... ./gradlew run
 ```
 
-## Sporadic body cannot be empty when content-type is set to 'application/json' on web driver quit (selenium 4.10.0)
+## Sporadic body cannot be empty when content-type is set to 'application/json' on web driver quit
 
-Java stack trace:
+Java stack trace (4.9.1):
+
+```
+> Task :run
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+eyes | 2023-06-16 16:52:51.571 | [info] | Logs saved in: /var/folders/3_/tcwlhbyd53q24p4wgclss95r0000gn/T/applitools-logs
+Jun 16, 2023 4:52:51 PM org.openqa.selenium.remote.tracing.opentelemetry.OpenTelemetryTracer createTracer
+INFO: Using OpenTelemetry for tracing
+title Example Domain
+Exception in thread "main" org.openqa.selenium.WebDriverException: Body cannot be empty when content-type is set to 'application/json'
+Build info: version: '4.9.1', revision: 'eb2032df7f'
+System info: os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '12.3.1', java.version: '17.0.2'
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Command: [b14a977d-d87f-4a1b-a131-7d0e667d5977, quit {}]
+Capabilities {acceptInsecureCerts: false, applitools:isECClient: true, browserName: chrome, browserVersion: 114.0.5735.106, chrome: {chromedriverVersion: 114.0.5735.90 (386bc09e8f4f..., userDataDir: /tmp/.com.google.Chrome.pzpJl8}, goog:chromeOptions: {debuggerAddress: localhost:44993}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: linux, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: b14a977d-d87f-4a1b-a131-7d0e667d5977
+        at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+        at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+        at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+        at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+        at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+        at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+        at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+        at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:53)
+        at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:193)
+        at org.openqa.selenium.remote.TracedCommandExecutor.execute(TracedCommandExecutor.java:51)
+        at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:543)
+        at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:598)
+        at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+        at org.openqa.selenium.remote.RemoteWebDriver.quit(RemoteWebDriver.java:445)
+        at org.example.Main.main(Main.java:43)
+```
+
+Java stack trace (4.10.0):
 
 ```
 > Task :run
