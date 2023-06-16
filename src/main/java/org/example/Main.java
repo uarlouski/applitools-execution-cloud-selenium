@@ -38,6 +38,8 @@ public class Main {
                     "status", "Passed"
             ));
         } finally {
+            // Exception in thread "main" org.openqa.selenium.WebDriverException: Body cannot be empty when content-type
+            // is set to 'application/json'
             driver.quit();
         }
     }

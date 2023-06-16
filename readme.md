@@ -4,6 +4,254 @@
 EYES_SERVER_URL=... API_KEY=... ./gradlew run
 ```
 
+## Sporadic body cannot be empty when content-type is set to 'application/json' on web driver quit (selenium 4.10.0)
+
+Java stack trace:
+
+```
+> Task :run
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+eyes | 2023-06-16 16:22:09.473 | [info] | Logs saved in: /var/folders/3_/tcwlhbyd53q24p4wgclss95r0000gn/T/applitools-logs
+Jun 16, 2023 4:22:09 PM org.openqa.selenium.remote.tracing.opentelemetry.OpenTelemetryTracer createTracer
+INFO: Using OpenTelemetry for tracing
+title Example Domain
+Exception in thread "main" org.openqa.selenium.WebDriverException: Body cannot be empty when content-type is set to 'application/json'
+Build info: version: '4.10.0', revision: 'c14d967899'
+System info: os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '12.3.1', java.version: '17.0.2'
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Command: [1c89a18d-b624-4dec-a77b-51fc146b5b99, quit {}]
+Capabilities {acceptInsecureCerts: false, applitools:isECClient: true, browserName: chrome, browserVersion: 114.0.5735.106, chrome: {chromedriverVersion: 114.0.5735.90 (386bc09e8f4f..., userDataDir: /tmp/.com.google.Chrome.r2Z4Yk}, goog:chromeOptions: {debuggerAddress: localhost:38995}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: linux, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 1c89a18d-b624-4dec-a77b-51fc146b5b99
+        at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+        at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+        at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+        at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+        at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+        at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:199)
+        at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:132)
+        at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:51)
+        at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+        at org.openqa.selenium.remote.TracedCommandExecutor.execute(TracedCommandExecutor.java:51)
+        at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:531)
+        at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:590)
+        at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:594)
+        at org.openqa.selenium.remote.RemoteWebDriver.quit(RemoteWebDriver.java:446)
+        at org.example.Main.main(Main.java:41)
+```
+
+Core universal logs:
+
+```
+core-universal | 2023-06-16T13:22:07.162Z [INFO ] Core universal is going to be initialized with options {
+  debug: false,
+  shutdownMode: 'stdin',
+  idleTimeout: 900000,
+  printStdout: false,
+  _: [ 'universal' ],
+  'port 0': true,
+  singleton: false,
+  'shutdown-mode': 'stdin',
+  shutdown: 'stdin',
+  port: 21077,
+  fork: false,
+  'port-resolution-mode': 'next',
+  'port-resolution': 'next',
+  portResolution: 'next',
+  portResolutionMode: 'next',
+  'idle-timeout': 900000,
+  '$0': '/private/var/folders/3_/tcwlhbyd53q24p4wgclss95r0000gn/T/core-macos'
+}
+core-universal | 2023-06-16T13:22:07.174Z [INFO ] Core universal is started on port 21077
+socket | 2023-06-16T13:22:09.323Z [INFO ] Emit event of type "Logger.log" with payload {
+    "level": "info",
+    "message": "Logs saved in: /var/folders/3_/tcwlhbyd53q24p4wgclss95r0000gn/T/applitools-logs"
+}
+socket | 2023-06-16T13:22:09.489Z [INFO ] Received event of type {"name":"Core.makeCore"} with payload {
+    "agentId": "eyes.sdk.java/5.54.0",
+    "cwd": "/Users/uarlouski/Workspace/Repositories/applitools-execution-cloud-selenium",
+    "spec": "webdriver"
+}
+core | 2023-06-16T13:22:09.489Z [INFO ] Core is initialized without custom base core
+core-base | 2023-06-16T13:22:09.489Z [INFO ] Core is initialized in directory /Users/uarlouski/Workspace/Repositories/applitools-execution-cloud-selenium for agent eyes-universal/3.2.1/eyes.sdk.java/5.54.0
+socket | 2023-06-16T13:22:09.493Z [INFO ] Received event of type {"name":"Core.makeManager","key":"7049a6d9-f930-4f23-8572-4dcf287a4cce"} with payload {
+    "type": "classic"
+}
+core (manager-classic-nju) | 2023-06-16T13:22:09.493Z [INFO ] Command "makeManager" is called with settings {
+  concurrency: 5,
+  legacyConcurrency: undefined,
+  agentId: 'eyes-universal/3.2.1/eyes.sdk.java/5.54.0',
+  batch: { id: 'generated-01e84ca7-3a60-44ce-a75c-8b199ba532d0' }
+}
+core-base (manager-classic-nju) | 2023-06-16T13:22:09.494Z [INFO ] Core is initialized in directory /Users/uarlouski/Workspace/Repositories/applitools-execution-cloud-selenium for agent eyes-universal/3.2.1/eyes.sdk.java/5.54.0
+core-ufg (manager-classic-nju) | 2023-06-16T13:22:09.494Z [INFO ] Core ufg is initialized with custom base core
+core-classic (manager-classic-nju) | 2023-06-16T13:22:09.494Z [INFO ] Core classic is initialized with custom base core
+socket | 2023-06-16T13:22:09.494Z [INFO ] Emit event of type {"name":"Core.makeManager","key":"7049a6d9-f930-4f23-8572-4dcf287a4cce"} with payload {
+    "result": {
+        "applitools-ref-id": "bfa30ae1-007d-4244-a8a3-fa8b6b184e74"
+    }
+}
+socket | 2023-06-16T13:22:09.499Z [INFO ] Received event of type {"name":"Core.getECClient","key":"0e4da50b-8fac-4e9c-a1e1-74cb54376c27"} with payload {}
+ec-client | 2023-06-16T13:22:09.500Z [INFO ] Proxy server has started on port 64632
+socket | 2023-06-16T13:22:09.500Z [INFO ] Emit event of type {"name":"Core.getECClient","key":"0e4da50b-8fac-4e9c-a1e1-74cb54376c27"} with payload {
+    "result": {
+        "url": "http://localhost:64632"
+    }
+}
+ec-client (proxy-request-uv0) | 2023-06-16T13:22:10.010Z [INFO ] Received request [POST] /session
+ec-client (proxy-request-uv0) | 2023-06-16T13:22:10.011Z [INFO ] Request was intercepted with body: {
+  capabilities: {
+    firstMatch: [
+      {
+        'applitools:apiKey': '...',
+        'applitools:eyesServerUrl': '...',
+        browserName: 'chrome'
+      }
+    ]
+  }
+}
+ec-client (proxy-request-uv0) | 2023-06-16T13:22:10.012Z [INFO ] Request body has modified: {
+  capabilities: {
+    firstMatch: [
+      {
+        'applitools:apiKey': '...',
+        'applitools:eyesServerUrl': '...',
+        browserName: 'chrome',
+        'applitools:batch': {
+          id: 'generated-3939b543-8fd3-49b8-9c37-e2877127ac99',
+          name: undefined,
+          sequenceName: undefined,
+          notifyOnCompletion: undefined
+        },
+        'applitools:tunnel': undefined,
+        'applitools:useSelfHealing': undefined,
+        'applitools:sessionName': undefined,
+        'applitools:timeout': undefined,
+        'applitools:inactivityTimeout': undefined,
+        'applitools:browserName': 'chrome'
+      }
+    ]
+  }
+}
+ec-client (proxy-request-uv0/queue-{"eyesServerUrl":"...","apiKey":"..."}) | 2023-06-16T13:22:10.012Z [INFO ] Task was added to the queue
+ec-client (proxy-request-uv0) | 2023-06-16T13:22:11.886Z [INFO ] Response was intercepted with body: {
+  value: {
+    capabilities: {
+      acceptInsecureCerts: false,
+      browserName: 'chrome',
+      browserVersion: '114.0.5735.106',
+      chrome: {
+        chromedriverVersion: '114.0.5735.90 (386bc09e8f4f2e025eddae123f36f6263096ae49-refs/branch-heads/5735@{#1052})',
+        userDataDir: '/tmp/.com.google.Chrome.r2Z4Yk'
+      },
+      'goog:chromeOptions': { debuggerAddress: 'localhost:38995' },
+      networkConnectionEnabled: false,
+      pageLoadStrategy: 'normal',
+      platformName: 'linux',
+      proxy: {},
+      setWindowRect: true,
+      strictFileInteractability: false,
+      timeouts: { implicit: 0, pageLoad: 300000, script: 30000 },
+      unhandledPromptBehavior: 'dismiss and notify',
+      'webauthn:extension:credBlob': true,
+      'webauthn:extension:largeBlob': true,
+      'webauthn:extension:minPinLength': true,
+      'webauthn:extension:prf': true,
+      'webauthn:virtualAuthenticators': true
+    },
+    sessionId: '1c89a18d-b624-4dec-a77b-51fc146b5b99'
+  }
+}
+ec-client (proxy-request-uv0) | 2023-06-16T13:22:11.887Z [INFO ] Request was responded with status 200
+ec-client (proxy-request-xvs) | 2023-06-16T13:22:11.983Z [INFO ] Received request [POST] /session/1c89a18d-b624-4dec-a77b-51fc146b5b99/execute/sync
+ec-client (proxy-request-xvs) | 2023-06-16T13:22:11.983Z [INFO ] Custom script execution was intercepted with body: {
+  script: 'applitools:startTest',
+  args: [ { appName: 'app-name', testName: 'test-name' } ]
+}
+driver (proxy-request-xvs) | 2023-06-16T13:22:12.370Z [INFO ] Extracted driver info { sessionId: '1c89a18d-b624-4dec-a77b-51fc146b5b99' }
+driver (proxy-request-xvs) | 2023-06-16T13:22:12.370Z [INFO ] Extracted driver capabilities {
+  acceptInsecureCerts: false,
+  browserName: 'chrome',
+  browserVersion: '114.0.5735.106',
+  chrome: {
+    chromedriverVersion: '114.0.5735.90 (386bc09e8f4f2e025eddae123f36f6263096ae49-refs/branch-heads/5735@{#1052})',
+    userDataDir: '/tmp/.com.google.Chrome.r2Z4Yk'
+  },
+  'goog:chromeOptions': { debuggerAddress: 'localhost:38995' },
+  networkConnectionEnabled: false,
+  pageLoadStrategy: 'normal',
+  platformName: 'linux',
+  proxy: {},
+  setWindowRect: true,
+  strictFileInteractability: false,
+  timeouts: { implicit: 0, pageLoad: 300000, script: 30000 },
+  unhandledPromptBehavior: 'dismiss and notify',
+  'webauthn:extension:credBlob': true,
+  'webauthn:extension:largeBlob': true,
+  'webauthn:extension:minPinLength': true,
+  'webauthn:extension:prf': true,
+  'webauthn:virtualAuthenticators': true,
+  'applitools:isECClient': true
+}
+driver (proxy-request-xvs) | 2023-06-16T13:22:12.370Z [INFO ] Extracted capabilities environment {
+  browserName: 'chrome',
+  browserVersion: '114.0.5735.106',
+  platformName: 'linux',
+  platformVersion: undefined,
+  isW3C: true,
+  isMobile: false,
+  isChrome: true,
+  isECClient: true
+}
+driver (proxy-request-xvs) | 2023-06-16T13:22:12.370Z [INFO ] Executing poll script
+driver (proxy-request-xvs) | 2023-06-16T13:22:12.742Z [INFO ] Extracted user agent Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36
+driver (proxy-request-xvs) | 2023-06-16T13:22:12.742Z [INFO ] Extracted user agent environment {
+  platformName: 'Linux',
+  platformVersion: undefined,
+  browserName: 'Chrome',
+  browserVersion: '114.0',
+  isReliable: false
+}
+driver (proxy-request-xvs) | 2023-06-16T13:22:12.743Z [INFO ] Extracted environment {
+  browserName: 'Chrome',
+  browserVersion: '114.0',
+  platformName: 'Linux',
+  platformVersion: undefined,
+  isW3C: true,
+  isMobile: false,
+  isChrome: true,
+  isECClient: true,
+  isWeb: true,
+  isReliable: false,
+  isIE: false,
+  isEdge: false,
+  isEdgeLegacy: false,
+  isChromium: true,
+  isWindows: false,
+  isMac: false,
+  isAndroid: false,
+  isIOS: false,
+  isEC: true
+}
+driver (proxy-request-xvs) | 2023-06-16T13:22:12.743Z [INFO ] Switching to a child context with depth: 0
+driver (proxy-request-xvs) | 2023-06-16T13:22:12.743Z [INFO ] Extracting viewport size from web driver using js snippet
+driver (proxy-request-xvs) | 2023-06-16T13:22:13.213Z [INFO ] Extracted viewport size { height: 961, width: 1919 }
+ec-client (proxy-request-xvs) | 2023-06-16T13:22:16.386Z [INFO ] Request was responded with status 200
+ec-client (proxy-request-vmp) | 2023-06-16T13:22:16.392Z [INFO ] Received request [POST] /session/1c89a18d-b624-4dec-a77b-51fc146b5b99/url
+ec-client (proxy-request-vmp) | 2023-06-16T13:22:16.393Z [INFO ] Passthrough request
+ec-client (proxy-request-vmp) | 2023-06-16T13:22:16.856Z [INFO ] Request was responded with status 200
+ec-client (proxy-request-88q) | 2023-06-16T13:22:16.877Z [INFO ] Received request [GET] /session/1c89a18d-b624-4dec-a77b-51fc146b5b99/title
+ec-client (proxy-request-88q) | 2023-06-16T13:22:16.877Z [INFO ] Passthrough request
+ec-client (proxy-request-88q) | 2023-06-16T13:22:17.233Z [INFO ] Request was responded with status 200
+ec-client (proxy-request-2vg) | 2023-06-16T13:22:17.245Z [INFO ] Received request [POST] /session/1c89a18d-b624-4dec-a77b-51fc146b5b99/execute/sync
+ec-client (proxy-request-2vg) | 2023-06-16T13:22:17.246Z [INFO ] Custom script execution was intercepted with body: { script: 'applitools:endTest', args: [ { status: 'Passed' } ] }
+ec-client (proxy-request-2vg) | 2023-06-16T13:22:17.247Z [INFO ] Request was responded with status 200
+ec-client (proxy-request-ks7) | 2023-06-16T13:22:17.253Z [INFO ] Received request [DELETE] /session/1c89a18d-b624-4dec-a77b-51fc146b5b99
+ec-client (proxy-request-ks7) | 2023-06-16T13:22:17.253Z [INFO ] Request was intercepted with sessionId: 1c89a18d-b624-4dec-a77b-51fc146b5b99
+ec-client (proxy-request-ks7) | 2023-06-16T13:22:17.593Z [INFO ] Request was responded with status 400
+```
+
 ## Bad Request on applitools:startTest (fixed, obsolete documentation)
 
 [Docs](https://applitools.com/docs/topics/execution-cloud/non-eyes.html)

@@ -10,7 +10,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.seleniumhq.selenium:selenium-java:4.9.1'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.10.0'
     implementation 'com.applitools:eyes-selenium-java5:5.54.0'
 
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
