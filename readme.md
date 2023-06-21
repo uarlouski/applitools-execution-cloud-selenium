@@ -4,6 +4,28 @@
 EYES_SERVER_URL=... API_KEY=... ./gradlew run
 ```
 
+## NPE when starting universal core (sdk 5.55.0)
+
+Java stack trace:
+
+```
+> Task :run FAILED
+Exception in thread "main" java.lang.ExceptionInInitializerError
+        at com.applitools.eyes.universal.server.UniversalSdkNativeLoader.copyAndStartUniversalCore(UniversalSdkNativeLoader.java:77)
+        at com.applitools.eyes.universal.server.UniversalSdkNativeLoader.start(UniversalSdkNativeLoader.java:37)
+        at com.applitools.eyes.EyesRunner.runServer(EyesRunner.java:122)
+        at com.applitools.eyes.EyesRunner.<init>(EyesRunner.java:78)
+        at com.applitools.eyes.selenium.ClassicRunner.<init>(ClassicRunner.java:36)
+        at com.applitools.eyes.selenium.ClassicRunner.<init>(ClassicRunner.java:32)
+        at com.applitools.eyes.selenium.Eyes.getExecutionCloudURL(Eyes.java:74)
+        at org.example.Main.main(Main.java:21)
+Caused by: java.lang.NullPointerException: inStream parameter is null
+        at java.base/java.util.Objects.requireNonNull(Objects.java:233)
+        at java.base/java.util.Properties.load(Properties.java:407)
+        at com.applitools.eyes.universal.utils.SystemInfo.<clinit>(SystemInfo.java:12)
+        ... 8 more
+```
+
 ## Sporadic body cannot be empty when content-type is set to 'application/json' on web driver quit
 
 Java stack trace (4.9.1):
