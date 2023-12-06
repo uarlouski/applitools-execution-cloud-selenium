@@ -1,7 +1,7 @@
 # README
 
 ```bash
-EYES_SERVER_URL=... API_KEY=... ./gradlew run
+EYES_SERVER_URL=... API_KEY=... PAGE_URL=... ./gradlew executionCloudRun
 ```
 
 ## Fixed issues
