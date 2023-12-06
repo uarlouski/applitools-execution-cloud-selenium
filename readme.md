@@ -4,9 +4,11 @@
 EYES_SERVER_URL=... API_KEY=... ./gradlew run
 ```
 
-## Actual issues
+## Fixed issues
 
 ### Sporadic body cannot be empty when content-type is set to 'application/json' on web driver quit
+
+Fixed with the latest version of eyes universal.
 
 Java stack trace (4.9.1):
 
@@ -40,7 +42,7 @@ Session ID: b14a977d-d87f-4a1b-a131-7d0e667d5977
         at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:598)
         at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
         at org.openqa.selenium.remote.RemoteWebDriver.quit(RemoteWebDriver.java:445)
-        at org.example.Main.main(Main.java:43)
+        at org.example.ExecutionCloudRun.main(Main.java:43)
 ```
 
 Java stack trace (4.10.0):
@@ -75,7 +77,7 @@ Session ID: 1c89a18d-b624-4dec-a77b-51fc146b5b99
         at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:590)
         at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:594)
         at org.openqa.selenium.remote.RemoteWebDriver.quit(RemoteWebDriver.java:446)
-        at org.example.Main.main(Main.java:41)
+        at org.example.ExecutionCloudRun.main(Main.java:41)
 ```
 
 Core universal logs:
@@ -289,8 +291,6 @@ ec-client (proxy-request-ks7) | 2023-06-16T13:22:17.253Z [INFO ] Request was int
 ec-client (proxy-request-ks7) | 2023-06-16T13:22:17.593Z [INFO ] Request was responded with status 400
 ```
 
-## Fixed issues
-
 ### NPE when starting universal core (sdk 5.55.0)
 
 Fixed in sdk 5.56.0 by the following PR: https://github.com/applitools/eyes.sdk.javascript1/pull/1664 
@@ -307,7 +307,7 @@ Exception in thread "main" java.lang.ExceptionInInitializerError
         at com.applitools.eyes.selenium.ClassicRunner.<init>(ClassicRunner.java:36)
         at com.applitools.eyes.selenium.ClassicRunner.<init>(ClassicRunner.java:32)
         at com.applitools.eyes.selenium.Eyes.getExecutionCloudURL(Eyes.java:74)
-        at org.example.Main.main(Main.java:21)
+        at org.example.ExecutionCloudRun.main(Main.java:21)
 Caused by: java.lang.NullPointerException: inStream parameter is null
         at java.base/java.util.Objects.requireNonNull(Objects.java:233)
         at java.base/java.util.Properties.load(Properties.java:407)
@@ -350,7 +350,7 @@ Session ID: b7d8f2d0-f7b4-4f5d-abec-45cf5abef1e7
         at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:598)
         at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
         at org.openqa.selenium.remote.RemoteWebDriver.quit(RemoteWebDriver.java:445)
-        at org.example.Main.main(Main.java:32)
+        at org.example.ExecutionCloudRun.main(Main.java:32)
 ```
 
 Core universal logs:

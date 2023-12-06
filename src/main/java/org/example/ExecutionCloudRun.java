@@ -11,7 +11,7 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Main {
+public class ExecutionCloudRun {
     public static void main(String[] args) throws MalformedURLException {
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setBrowserName("chrome");
