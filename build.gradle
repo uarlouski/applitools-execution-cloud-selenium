@@ -10,7 +10,8 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.applitools:eyes-selenium-java5:5.65.0'
+    implementation 'com.applitools:eyes-selenium-java5:5.67.2'
+    implementation 'io.github.bonigarcia:webdrivermanager:5.7.0'
 
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
@@ -20,7 +21,7 @@ test {
     useJUnitPlatform()
 }
 
-task executionCloudRun(type: JavaExec) {
+task run(type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
-    mainClass = 'org.example.ExecutionCloudRun'
+    mainClass = 'org.example.Run'
 }
