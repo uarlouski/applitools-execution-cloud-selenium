@@ -2,11 +2,12 @@ package org.example;
 
 import com.applitools.eyes.BatchInfo;
 import com.applitools.eyes.EyesRunner;
+import com.applitools.eyes.RectangleSize;
+import com.applitools.eyes.selenium.BrowserType;
 import com.applitools.eyes.selenium.Configuration;
 import com.applitools.eyes.selenium.Eyes;
 import com.applitools.eyes.selenium.fluent.Target;
-import com.applitools.eyes.visualgrid.model.IosDeviceInfo;
-import com.applitools.eyes.visualgrid.model.IosDeviceName;
+import com.applitools.eyes.visualgrid.model.DesktopBrowserInfo;
 import com.applitools.eyes.visualgrid.services.VisualGridRunner;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
@@ -22,7 +23,9 @@ public class Run {
         try {
             EyesRunner runner = new VisualGridRunner(1);
             Configuration configuration = new Configuration();
-            configuration.addBrowser(new IosDeviceInfo(IosDeviceName.iPhone_14));
+            RectangleSize viewportSize = new RectangleSize(1920, 1080);
+            DesktopBrowserInfo info = new DesktopBrowserInfo(viewportSize, BrowserType.CHROME);
+            configuration.addBrowser(info);
 
             String server = System.getenv("EYES_SERVER_URL");
             String apiKey = System.getenv("API_KEY");
