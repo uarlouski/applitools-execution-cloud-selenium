@@ -21,7 +21,17 @@ test {
     useJUnitPlatform()
 }
 
-task run(type: JavaExec) {
+java {
+    sourceCompatibility = 21
+    targetCompatibility = 21
+}
+
+tasks.register('run', JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
     mainClass = 'org.example.Run'
+}
+
+tasks.register('mobileRun', JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'org.example.MobileRun'
 }
